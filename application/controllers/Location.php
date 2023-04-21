@@ -9,24 +9,7 @@ class Location extends CI_Controller
 		$data['all_value'] = $this->Master_model->get_all_state();
 		$this->load->view('state_list', $data);
 	}
-     public function getStateById()
-       {
-
-         $m_state_id = $this->input->post('m_state_name');
-         $m_state_name= $this->Master_model->getstateById1($m_state_id);
-         if ($m_state_name) {
-             echo json_encode([
-                          'status'=>true,
-                          'message'=>'City already exits'
-             ]);
-         }else{
-            echo json_encode([
-                          'status'=>false,
-                          'message'=>'City not exits'
-             ]);
-         }
-       }
-   public function add_state()
+	public function add_state()
 	{
 		$data = $this->login_details();
 		$data['pagename'] = "Add State";
@@ -59,27 +42,6 @@ class Location extends CI_Controller
 		$data['get_active_state'] = $this->Master_model->get_active_state();
 		$this->load->view('city_list', $data);
 	}
-
-    public function getCityById()
-       {
-
-         $m_city_id = $this->input->post('m_city_name');
-         $m_city_name= $this->Master_model->getcityById1($m_city_id);
-         if ($m_city_name) {
-             echo json_encode([
-                          'status'=>true,
-                          'message'=>'City already exits'
-             ]);
-         }else{
-            echo json_encode([
-                          'status'=>false,
-                          'message'=>'City not exits'
-             ]);
-         }
-       }
-
-
-
 	public function add_city()
 	{
 		$data = $this->login_details();

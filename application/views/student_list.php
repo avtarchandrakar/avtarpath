@@ -96,6 +96,7 @@
                                         <th>Name</th>
                                         <th>Mobile No.</th>
                                         <th>Email</th>
+                                        <th>Gender</th>
                                         <th>Registration Date</th>
                                         <th>Status</th>
                                         <th>Action</th>

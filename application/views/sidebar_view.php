@@ -159,13 +159,7 @@
         
         <li class="">
 
-          <a href="<?php echo site_url('Users/user_list') ?>" class="mynev-links"> <img class="icon-size" src="<?php echo base_url('uploads/icon/student.png');?>"> Users List </a>
-
-        </li>
-
-        <li class="">
-
-          <a href="<?php echo site_url('Shops/shop_list') ?>" class="mynev-links"> <img class="icon-size" src="<?php echo base_url('uploads/icon/Shop.webp');?>"  style=" height:20px; width: 20px; margin-left: ;">&nbsp;Shop </a>
+          <a href="<?php echo site_url('Students/student_list') ?>" class="mynev-links"> <img class="icon-size" src="<?php echo base_url('uploads/icon/student.png');?>"> Users List </a>
 
         </li>
 
@@ -174,8 +168,6 @@
           <ul class="collapse list-unstyled mynev-submenus" id="Listings1">
             <li><a href="<?php echo site_url('Location/state') ?>" class="mynev-links">State</a></li>
             <li><a href="<?php echo site_url('Location/city') ?>" class="mynev-links">City</a></li>
-            <li><a href="<?php echo site_url('Master/category_list') ?>" class="mynev-links">Category</a></li>
-            <li><a href="<?php echo site_url('Master/designation_list') ?>" class="mynev-links">Designation</a></li>
             <li><a href="<?php echo site_url('Slider') ?>" class="mynev-links">Slider</a></li>
           </ul>
         </li>

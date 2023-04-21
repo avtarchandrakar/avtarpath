@@ -177,77 +177,56 @@ class Master extends CI_Controller
 		  echo json_encode($info);
 		}
 	  }
-      
-    //-------CATEGORY SECTION  --------//
 
 
-	   public function category_list(){ $data = $this->login_details();
-        $data['pagename'] = "All category Details";
-        $data['from_date'] ='';
-        $data['to_date'] ='';
-        $data['from_date'] = $this->input->get('from_date');
-        $data['to_date'] = $this->input->get('to_date');
-        //echo "<pre>";print_r($data['all_value']);die();
-        // $data['globel_branch'] = $this->Main_model->get_globel_branch();
-        // $data['city_dtl'] = $this->Main_model->get_all_city_list();
-        $data['mech_value'] = $this->Main_model->get_category_list($data['from_date'],$data['to_date']);
-        $this->load->view('category_list', $data);
-      
-      }
+	  public function category_list()
+	{
+		$data = $this->login_details();
+		$data['pagename'] = "All Category";
+		$data['ct_id'] = $this->input->get('ct');
+		$data['all_value'] = $this->Main_model->all_category();
+		$data['all_type'] = $this->Main_model->get_all_type_list();
+		$this->load->view('category_list', $data);
+	}
 
-      public function add_category(){ 
+	public function insert_category(){
 
-       $data = $this->login_details();
-        $data['id'] = $this->input->get('id');
-        if(!empty($data['id'] )){ $data['pagename'] = "Edit category Details"; }else{
-          $data['pagename'] = "Add Category Details"; 
-        }
-        // $data['city_dtl'] = $this->Main_model->get_all_city_list();
-        $data['edit_value'] = $this->Main_model->get_category_dtl($data['id']);
-       
-      //  print_r($data['edit_value']);die();
-        $this->load->view('add_category', $data);
-      }
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+		
+		  $data = $this->Main_model->insert_category();
+		  if($data == 1){
+		  $info = array( 'status'=>'success',
+		  'message'=>'Category has been Inserted successfully!'
+		  );
+		  }else if($data == 2){
+			$info = array( 'status'=>'success',
+			'message'=>'Category has been Updated successfully!'
+			);
+		  }
+		  else{ 
+			$info = array( 'status'=>'error',
+			  'message'=>'Category Already Resigtered'
+			);
+		  } 
+		  echo json_encode($info);
+		}
+	  }
 
-      public function insert_category_dtl(){
-        if ($this->ajax_login() === false){ return; }
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-          if($data = $this->Main_model->insert_category_dtl()){
-            $info = array( 'status'=>'success',
-            'message'=>'category  has been Added successfully!'
-            );
-          }
-          else{ 
-            $info = array( 'status'=>'error',
-              'message'=>'Some problem Occurred!! please try again'
-            );
-          } 
-          echo json_encode($info);
-        }
-      }
+	  public function delete_category(){
 
-      public function view_category_dtl(){ $data = $this->login_details();
-        $data['pagename'] = "Category Details";
-        $data['id'] = $this->input->get('id');
-        $data['edit_value'] = $this->Main_model->get_category_dtl($data['id']);
-        // $data['get_a_student'] = $this->Main_model->get_a_student($data['edit_value'][0]->m_user_id);
-        // $data['get_all_plan'] = $this->Main_model->get_all_plan();
-       $this->load->view('view_category', $data);
-      
-      }
-      public function delete_category_dtl(){ if ($this->ajax_login() === false) { return; }
-          if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if($info = $this->Main_model->delete_category_dtl()){
-            }
-            else{ 
-              $info = array( 'status'=>'error',
-                'message'=>'Some Problem Occured'
-              );
-            }
-            echo json_encode($info);
-          }
-        }
-          // -------- end category ------//
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+		  if($data = $this->Main_model->delete_category()){
+		  $info = array( 'status'=>'success',
+		  'message'=>'Category has been Deleted successfully!'
+		  );
+		  }else{ 
+			$info = array( 'status'=>'error',
+			  'message'=>'Some problem Occurred!! please try again'
+			);
+		  } 
+		  echo json_encode($info);
+		}
+	  }
 
 	public function sub_cat_list()
 	{
@@ -404,89 +383,6 @@ class Master extends CI_Controller
 		  $data = $this->Main_model->get_subcat_by_cat();
 		  echo json_encode($data);
 	  }
-      
-
-    //------- designation -----====//
-
-      public function designation_list(){ $data = $this->login_details();
-        $data['pagename'] = "All designation Details";
-        $data['from_date'] ='';
-        $data['to_date'] ='';
-        $data['from_date'] = $this->input->get('from_date');
-        $data['to_date'] = $this->input->get('to_date');
-        //echo "<pre>";print_r($data['all_value']);die();
-        // $data['globel_branch'] = $this->Main_model->get_globel_branch();
-        // $data['city_dtl'] = $this->Main_model->get_all_city_list();
-        $data['mech_value'] = $this->Main_model->get_designation_list($data['from_date'],$data['to_date']);
-        $this->load->view('designation_list', $data);
-      
-      }
-
-
-      public function add_designation(){ 
-
-       $data = $this->login_details();
-        $data['id'] = $this->input->get('id');
-        if(!empty($data['id'] )){ $data['pagename'] = "Edit designation Details"; }else{
-          $data['pagename'] = "Add designation Details"; 
-        }
-        // $data['city_dtl'] = $this->Main_model->get_all_city_list();
-        $data['edit_value'] = $this->Main_model->get_designation_dtl($data['id']);
-       
-      //  print_r($data['edit_value']);die();
-        $this->load->view('add_designation', $data);
-      }
-
-
-      public function insert_designation_dtl(){
-        if ($this->ajax_login() === false){ return; }
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
-          if($data = $this->Main_model->insert_designation_dtl()){
-            $info = array( 'status'=>'success',
-            'message'=>'designation  has been Added successfully!'
-            );
-          }
-          else{ 
-            $info = array( 'status'=>'error',
-              'message'=>'Some problem Occurred!! please try again'
-            );
-          } 
-          echo json_encode($info);
-        }
-      }
-      
-
-
-      public function view_designation_dtl(){ $data = $this->login_details();
-        $data['pagename'] = "Category Details";
-        $data['id'] = $this->input->get('id');
-        $data['edit_value'] = $this->Main_model->get_designation_dtl($data['id']);
-        // $data['get_a_student'] = $this->Main_model->get_a_student($data['edit_value'][0]->m_user_id);
-        // $data['get_all_plan'] = $this->Main_model->get_all_plan();
-       $this->load->view('view_designation', $data);
-      
-      }
-
-       public function delete_designation_dtl(){ if ($this->ajax_login() === false) { return; }
-          if($_SERVER["REQUEST_METHOD"] == "POST"){
-            if($info = $this->Main_model->delete_designation_dtl()){
-            }
-            else{ 
-              $info = array( 'status'=>'error',
-                'message'=>'Some Problem Occured'
-              );
-            }
-            echo json_encode($info);
-          }
-        }
-
-	
-    //------- designation -----====//
-
-
-
-
-
 
 
 
@@ -521,8 +417,4 @@ class Master extends CI_Controller
 			return false;
 		}
 	}
-  
-
-
-
 }

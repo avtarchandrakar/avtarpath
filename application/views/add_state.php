@@ -40,13 +40,13 @@
                            <div class="col-md-8">
                               <div class="form-group">
                                  <label>Name<span class="text-danger">*</span></label>
-                                 <input type="text" name="m_state_name"  onkeydown="return /[a-z]/i.test(event.key)" id="m_state_name" class="form-control"  placeholder=" Enter Name" required="" >
+                                 <input type="text" name="m_state_name" id="m_state_name" class="form-control"  placeholder=" Enter Name" required="" >
                               </div>
                            </div>
                            <div class="col-md-4">
                               <div class="form-group">
                                  <label>Status<span class="text-danger">*</span></label>
-                                 <select name="m_state_status" id="m_state_status"  class="form-control" title="Select Status" required>
+                                 <select name="m_state_status" id="m_state_status" class="form-control" title="Select Status" required>
                                     <option value="1">Active</option>
                                     <option value="0">In-Active</option>
                                  </select>

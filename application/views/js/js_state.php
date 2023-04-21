@@ -1,24 +1,5 @@
 <script type="text/javascript"> $(document).ready(function(e){
-
-    $('#m_state_name').change(function(){
-        let m_state_name = this.value;
-          // console.log(contact_number);die();
-        $.post("<?= base_url('Location/getStateById') ?>",{m_state_name},function(data){
-
-          if (data.status)
-           {
-           
-            alert('State already exist');
-             $('#m_state_name').val('');
-           }
-          
-            // $('#contact_number').html(text);
-        },'json');
-      })
-
-
-
-  $("#frm-add-data").submit(function(e) { e.preventDefault();
+  $("form#frm-add-data").submit(function(e) { e.preventDefault();
   var clkbtn = $("#btn-add-data"); clkbtn.prop('disabled',true);
   var formData = new FormData(this); 
   
@@ -105,7 +86,3 @@ $("#custom_tbl").on("click",".delete-data",function(){
 });
 });
 </script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/alpine.min.js');?>">
-   
-</script>
-<script type="text/javascript" src="<?php echo base_url('assets/js/jquery.min.js');?>"></script>

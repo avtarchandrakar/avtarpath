@@ -7,20 +7,10 @@ class Master_model extends CI_model{
 	  	$res = $this->db->get('master_state_tbl')->result();
 	  	return $res;
 	}
-
-
-	  public function getstateById1($m_state_id)   //state validation
-  {
-
-    // print_r($id);die();
-     $m_state_name = $this->db->select('m_state_name,m_state_id')->where('m_state_name',$m_state_id)->get('master_state_tbl')->result();
-         
-      return $m_state_name;
-  }
 	public function get_a_state($edid){
 		$this->db->select('*');
 		$this->db->where('m_state_id',$edid);
-    $res = $this->db->get('master_state_tbl')->result();
+	  	$res = $this->db->get('master_state_tbl')->result();
 	  	return $res;
 	}
   	public function insert_state(){
@@ -141,15 +131,6 @@ class Master_model extends CI_model{
       }
       return json_encode($data);
     }
-
-    public function getcityById1($m_city_id)
-  {
-
-    // print_r($id);die();
-     $m_city_name = $this->db->select('m_city_name,m_city_id')->where('m_city_name',$m_city_id)->get('master_city_tbl')->result();
-         
-      return $m_city_name;
-  }
   	//Country State City
   	public function get_active_country(){
 		$this->db->select('*');
