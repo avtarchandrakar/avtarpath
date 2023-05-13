@@ -166,6 +166,23 @@
         <li>
           <a href="#Listings1" data-toggle="collapse" aria-expanded="false"> <img class="icon-size" src="<?php echo base_url('uploads/icon/database.png');?>"> Masters</a>
           <ul class="collapse list-unstyled mynev-submenus" id="Listings1">
+            <li><a href="<?php echo site_url('Masters/department') ?>" class="mynev-links">Department</a></li>
+            <li><a href="<?php echo site_url('Masters/test_category') ?>" class="mynev-links">Test Category</a></li>
+            <li><a href="<?php echo site_url('Masters/consultant_category') ?>" class="mynev-links">Consultant Category</a></li>
+            <li><a href="<?php echo site_url('Masters/consultant') ?>" class="mynev-links">Consultant</a></li>
+            <li><a href="<?php echo site_url('Masters/patient_master') ?>" class="mynev-links">Patient Master</a></li>
+            <li><a href="<?php echo site_url('Masters/collection_center') ?>" class="mynev-links">Collection Center</a></li>
+            <li><a href="<?php echo site_url('Masters/processing_center') ?>" class="mynev-links">Processing Center</a></li>
+            <li><a href="<?php echo site_url('Masters/configure_ratelist') ?>" class="mynev-links">Configure RateList</a></li>
+            <li><a href="<?php echo site_url('Masters/sample_master') ?>" class="mynev-links">Sample Master</a></li>
+            <li><a href="<?php echo site_url('Masters/health_package') ?>" class="mynev-links">Health Package</a></li>
+            <li><a href="<?php echo site_url('Masters/company_lab_master') ?>" class="mynev-links">Company/Lab Master</a></li>
+            <li><a href="<?php echo site_url('Masters/tpa_master') ?>" class="mynev-links">TPA Master</a></li>
+            <li><a href="<?php echo site_url('Masters/configure_price_list') ?>" class="mynev-links">Configure PriceList</a></li>
+            <li><a href="<?php echo site_url('Masters/machine_master') ?>" class="mynev-links">Machine Master</a></li>
+            <li><a href="<?php echo site_url('Masters/laboratory_master') ?>" class="mynev-links">Laboratory Master</a></li>
+            <li><a href="<?php echo site_url('Masters/user_group') ?>" class="mynev-links">User Group</a></li>
+            <li><a href="<?php echo site_url('Masters/user_master') ?>" class="mynev-links">User Master</a></li>
             <li><a href="<?php echo site_url('Location/state') ?>" class="mynev-links">State</a></li>
             <li><a href="<?php echo site_url('Location/city') ?>" class="mynev-links">City</a></li>
             <li><a href="<?php echo site_url('Slider') ?>" class="mynev-links">Slider</a></li>
