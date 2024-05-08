@@ -22,7 +22,7 @@
                   <div class="col-md-3 col-sm-3 pull-right">
                      <div class="seipkon-breadcromb-right">
 
-                     <a style="margin-right: 5px;" href="<?php  echo site_url('Location/collection_center'); ?>" class="btn btn-info btn-vsm"><i class="fa fa-long-arrow-left"></i> Back</a>
+                     <a style="margin-right: 5px;" href="<?php  echo site_url('Location/processing_center'); ?>" class="btn btn-info btn-vsm"><i class="fa fa-long-arrow-left"></i> Back</a>
                      
                   </div>
                   </div>
@@ -91,24 +91,6 @@
                                  </select>
                               </div>
                            </div>                        
-                           
-                           <div class="col-md-4">
-                              <div class="form-group">
-                                 <label>Proccessing Center<span class="text-danger">*</span></label>
-                                 <select name="pro_center" id="pro_center" class="form-control" title="Select Proccessing Center" required>
-                                    <?php 
-                                    $query=$this->db->query("select * from master_processing_center where  status='1' order by name");
-                                    $result = $query->result();
-                                    if(count($result)>0)
-                                    {
-                                       foreach($result as $row)
-                                       {
-                                     ?>
-                                    <option value="<?=$row->id?>" <?php if ($a_value[0]->pro_center==$row->id) { echo "selected"; } ?>><?=$row->name?></option>
-                                 <?php }}?>
-                                 </select>
-                              </div>
-                           </div>
                            <div class="col-md-4">
                               <div class="form-group">
                                  <label>Status<span class="text-danger">*</span></label>
@@ -127,7 +109,7 @@
                            </div>
                            <div class="col-md-6">
                               <div class="form-layout-submit">
-                              <a href="<?php echo site_url('Masters/collection_center') ?>" class="btn btn-block btn-danger">Reset</a>
+                              <a href="<?php echo site_url('Masters/processing_center') ?>" class="btn btn-block btn-danger">Reset</a>
                               </div>
                            </div>
                         </div>
@@ -146,6 +128,6 @@
 <!-- ========================/View=================Fix======= -->
 <!-- ========================Footer================Fix======= -->
 <?php $this->view('top_footer') ?>
-<?php $this->view('js/js_collection_center') ?>
+<?php $this->view('js/js_processing_center') ?>
 <?php   $this->view('js/custom_js'); ?>
 <!-- ========================Script==========================

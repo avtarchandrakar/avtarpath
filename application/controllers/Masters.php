@@ -171,6 +171,41 @@ class Masters extends CI_Controller
 	}
 
 
+	//processing_center
+	public function processing_center()
+	{
+		$data = $this->login_details();
+		$data['pagename'] = "Processing Center";
+		$data['all_value'] = $this->Masters_model->get_all_processing_center();
+		$this->load->view('processing_center', $data);
+	}
+
+	public function add_processing_center()
+	{
+		$data = $this->login_details();
+		$data['pagename'] = "Add Processing Center";
+		$this->load->view('add_processing_center', $data);
+	}
+
+	public function insert_processing_center(){
+		echo $this->Masters_model->insert_processing_center();
+	}
+	public function edit_processing_center()
+	{
+		$data = $this->login_details();
+		$data['pagename'] = "Edit Processing Center";
+		$data['edid'] = $this->input->get('edid');
+		$data['a_value'] = $this->Masters_model->get_a_processing_center($data['edid']);
+		$this->load->view('edit_processing_center', $data);
+	}
+	public function update_processing_center(){
+		echo $this->Masters_model->update_processing_center();
+	}
+	public function delete_processing_center(){
+		echo $this->Masters_model->delete_processing_center();;
+	}
+
+
 
 
 

@@ -41,7 +41,7 @@
                   <div class="col-md-3 col-sm-3 pull-right">
                      <div class="seipkon-breadcromb-right">
 
-                        <a style="margin-right: 5px;" href="<?php echo site_url('Masters/add_collection_center')?>" class="btn btn-info btn-vsm"><i class="fa fa-plus"></i> Add</a>
+                        <a style="margin-right: 5px;" href="<?php echo site_url('Masters/add_processing_center')?>" class="btn btn-info btn-vsm"><i class="fa fa-plus"></i> Add</a>
 
                         <a style="margin-right: 5px;" href="<?php echo site_url('Welcome')?>" class="btn btn-info btn-vsm"><i class="fa fa-long-arrow-left"></i> Back</a>
                     </div>
@@ -64,7 +64,6 @@
                                 <th>Email</th>
                                 <th>Mobile No</th>
                                 <th>Start Lab No</th>
-                                <th>Processing Center</th>
                                 <th>Address</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -75,7 +74,7 @@
                             $i=1;
                             if(!empty($all_value)){
                             foreach($all_value as $value){
-                                $edit_link= site_url('Masters/edit_collection_center?edid=').$value->id;
+                                $edit_link= site_url('Masters/edit_processing_center?edid=').$value->id;
                             ?>   
                                <tr>
                                  <td><?php echo $i;?></td>
@@ -85,7 +84,6 @@
                                  <td><?php echo $value->email;?></td>
                                  <td><?php echo $value->mobile;?></td>
                                  <td><?php echo $value->lab_no;?></td>
-                                 <td><?php echo $value->center_name;?></td>
                                  <td><?php echo $value->address;?></td>
                                  <td>
                                     <?php
@@ -132,5 +130,5 @@
 <!-- ========================/View=================Fix======= -->
 <!-- ========================Footer================Fix======= -->
 <?php $this->view('top_footer') ?>
-<?php $this->view('js/js_collection_center') ?>
+<?php $this->view('js/js_processing_center') ?>
 <?php $this->view('js/custom_js'); ?>

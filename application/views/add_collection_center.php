@@ -22,7 +22,7 @@
                   <div class="col-md-3 col-sm-3 pull-right">
                      <div class="seipkon-breadcromb-right">
 
-                     <a style="margin-right: 5px;" href="<?php  echo site_url('Masters/consultant'); ?>" class="btn btn-info btn-vsm"><i class="fa fa-long-arrow-left"></i> Back</a>
+                     <a style="margin-right: 5px;" href="<?php  echo site_url('Masters/collection_center'); ?>" class="btn btn-info btn-vsm"><i class="fa fa-long-arrow-left"></i> Back</a>
                      
                   </div>
                   </div>
@@ -77,7 +77,16 @@
                               <div class="form-group">
                                  <label>Area<span class="text-danger">*</span></label>
                                  <select name="area" id="area" class="form-control" title="Select Sample Collection" required>
-                                    <option value="Yes">Yes</option>
+                                    <?php 
+                                    $query=$this->db->query("select * from master_city_tbl where  m_city_status='1' order by m_city_name");
+                                    $result = $query->result();
+                                    if(count($result)>0)
+                                    {
+                                       foreach($result as $row)
+                                       {
+                                     ?>
+                                    <option value="<?=$row->m_city_id?>"><?=$row->m_city_name?></option>
+                                 <?php }}?>
                                  </select>
                               </div>
                            </div>                        
@@ -86,7 +95,17 @@
                               <div class="form-group">
                                  <label>Proccessing Center<span class="text-danger">*</span></label>
                                  <select name="pro_center" id="pro_center" class="form-control" title="Select Proccessing Center" required>
-                                    <option value="Yes">Yes</option>
+                                    <?php 
+                                    $query=$this->db->query("select * from master_processing_center where  status='1' order by name");
+                                    $result = $query->result();
+                                    if(count($result)>0)
+                                    {
+                                       foreach($result as $row)
+                                       {
+                                     ?>
+                                    <option value="<?=$row->id?>" ><?=$row->name?></option>
+                                 <?php }}?>
+
                                  </select>
                               </div>
                            </div>
@@ -108,7 +127,7 @@
                            </div>
                            <div class="col-md-6">
                               <div class="form-layout-submit">
-                              <a href="<?php echo site_url('Masters/consultant') ?>" class="btn btn-block btn-danger">Reset</a>
+                              <a href="<?php echo site_url('Masters/collection_center') ?>" class="btn btn-block btn-danger">Reset</a>
                               </div>
                            </div>
                         </div>

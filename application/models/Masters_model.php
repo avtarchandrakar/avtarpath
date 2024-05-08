@@ -295,10 +295,13 @@ class Masters_model extends CI_model{
 
     //collection_center
     public function get_all_collection_center(){
-			$this->db->select('*');
-		  	$this->db->order_by('name');
+			$this->db->select('master_collection_center.*,master_city_tbl.m_city_name as city_name,master_processing_center.name as center_name');
+      $this->db->join('master_city_tbl','master_city_tbl.m_city_id=master_collection_center.area','left');
+       $this->db->join('master_processing_center','master_processing_center.id=master_collection_center.pro_center','left');
+		  	$this->db->order_by('master_collection_center.name');
 		  	$res = $this->db->get('master_collection_center')->result();
-		  	return $res;
+         // echo '<pre>';print_r($res);die();
+		  	 return $res;
 		}
 
 		public function insert_collection_center(){
@@ -339,7 +342,15 @@ class Masters_model extends CI_model{
     $data = array();
       $s_data = array(
         	"name" => $this->input->post('name'),
-	        "status" => $this->input->post('status'),
+          "address" => $this->input->post('address'),
+          "area" => $this->input->post('area'),
+          "email" => $this->input->post('email'),
+          "alias" => $this->input->post('alias'),
+          "pro_center" => $this->input->post('pro_center'),
+          "mobile" => $this->input->post('mobile'),
+          "pro_center" => $this->input->post('pro_center'),
+          "lab_no" => $this->input->post('lab_no'),
+          "status" => $this->input->post('status'),
 	        "updated_at" => date('Y-m-d H:i'),
       );
       $this->db->where('id',$this->input->post('hidden_id'));
@@ -358,6 +369,88 @@ class Masters_model extends CI_model{
     public function delete_collection_center(){
       $this->db->where('id', $this->input->post('delete_id'));
       $set = $this->db->delete('master_collection_center');
+      if(!empty($set)){
+        $data['status'] = 'success';
+        $data['message'] = 'Deleted Successfully!';
+      }
+      else{
+        $data['status'] = 'fail';
+        $data['message'] = 'Somthing went wrong!';
+      }
+      return json_encode($data);
+    }
+
+
+    //processing_center
+    public function get_all_processing_center(){
+      $this->db->select('master_processing_center.*,master_city_tbl.m_city_name as city_name,master_processing_center.name as center_name');
+      $this->db->join('master_city_tbl','master_city_tbl.m_city_id=master_processing_center.area','left');
+        $this->db->order_by('master_processing_center.name');
+        $res = $this->db->get('master_processing_center')->result();
+        return $res;
+    }
+
+    public function insert_processing_center(){
+      $data = array();
+        $s_data = array(
+          "name" => $this->input->post('name'),
+          "address" => $this->input->post('address'),
+          "area" => $this->input->post('area'),
+          "email" => $this->input->post('email'),
+          "alias" => $this->input->post('alias'),
+          "mobile" => $this->input->post('mobile'),
+          "lab_no" => $this->input->post('lab_no'),
+          "status" => $this->input->post('status'),
+          "created_at" => date('Y-m-d H:i'),
+        );
+      $set = $this->db->insert('master_processing_center',$s_data);
+      if(!empty($set)){
+        $data['status'] = 'success';
+        $data['message'] = 'Inserted Successfully!';
+      }
+      else{
+        $data['status'] = 'fail';
+        $data['message'] = 'Somthing went wrong!';
+      }
+      return json_encode($data);
+    }
+
+    public function get_a_processing_center($edid){
+      $this->db->select('*');
+      $this->db->where('id',$edid);
+        $res = $this->db->get('master_processing_center')->result();
+        return $res;
+    }
+
+    public function update_processing_center(){
+    $data = array();
+      $s_data = array(
+          "name" => $this->input->post('name'),
+          "address" => $this->input->post('address'),
+          "area" => $this->input->post('area'),
+          "email" => $this->input->post('email'),
+          "alias" => $this->input->post('alias'),
+          "mobile" => $this->input->post('mobile'),
+          "lab_no" => $this->input->post('lab_no'),
+          "status" => $this->input->post('status'),
+          "updated_at" => date('Y-m-d H:i'),
+      );
+      $this->db->where('id',$this->input->post('hidden_id'));
+      $set = $this->db->update('master_processing_center',$s_data);
+      if(!empty($set)){
+        $data['status'] = 'success';
+        $data['message'] = 'Update Successfully!';
+      }
+      else{
+        $data['status'] = 'fail';
+        $data['message'] = 'Somthing went wrong!';
+      }
+      return json_encode($data);
+    }
+
+    public function delete_processing_center(){
+      $this->db->where('id', $this->input->post('delete_id'));
+      $set = $this->db->delete('master_processing_center');
       if(!empty($set)){
         $data['status'] = 'success';
         $data['message'] = 'Deleted Successfully!';
